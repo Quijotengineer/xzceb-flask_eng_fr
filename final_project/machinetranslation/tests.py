@@ -4,7 +4,7 @@ from translator import englishToFrench, frenchToEnglish
 class TestEnglishToFrench(unittest.TestCase):
     
     def test_NotNull(self):
-        self.assertIsNotNone(englishToFrench.text)
+        self.assertIsNotNone(englishText)
 
     def test_Hello(self):
         self.assertEqual(englishToFrench('Hello'), 'Bonjour')
@@ -12,10 +12,10 @@ class TestEnglishToFrench(unittest.TestCase):
 class TestFrenchToEnglish(unittest.TestCase):
 
     def test_NotNull(self):
-        self.assertIsNotNone(frenchToEnglish.text)
+        self.assertIsNotNone(frenchText)
 
     def test_Bonjour(self):
         self.assertEqual(frenchToEnglish('Bonjour'), 'Hello')
 
-if __name__ == '__main__'
+if __name__ == '__main__':
     unittest.main()

@@ -1,24 +1,34 @@
-import json
-from ibm_watson import LanguageTranslatorV3
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+# import json
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+from ibm_watson import LanguageTranslatorV3
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+# """
+# translator.py connects to ibm_watson
+# language translator and converts English
+# to French and vice versa using functions
+# frenchToEnglish and englishToFrench
+# """
+
+load_dotenv('.env')
 
 apikey = os.environ['apikey']
 url = os.environ['url']
-version = '2018-05-01'
 
-authenticator = IAMAuthenticator('{apikey}')
+authenticator = IAMAuthenticator(apikey)
 language_translator = LanguageTranslatorV3(
-    version='{version}',
+    version='2018-05-01',
     authenticator=authenticator
 )
 
 language_translator.set_service_url(url)
 
 def englishToFrench(englishText):
+    """
+    translate English to French
+    """
     #write the code here
     frenchText = language_translator.translate(
     text=englishText,
@@ -27,6 +37,9 @@ def englishToFrench(englishText):
     return frenchText
 
 def frenchToEnglish(frenchText):
+    """
+    translate French to English
+    """
     #write the code here
     englishText = language_translator.translate(
     text=frenchText,
