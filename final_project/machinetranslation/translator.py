@@ -25,24 +25,32 @@ language_translator = LanguageTranslatorV3(
 
 language_translator.set_service_url(url)
 
-def englishToFrench(englishText):
+def englishToFrench(english_text):
     """
     translate English to French
     """
-    #write the code here
-    frenchText = language_translator.translate(
-    text=englishText,
-    model_id='en-fr').get_result()
-    # print(json.dumps(translation, indent=2, ensure_ascii=False))
-    return frenchText
+    if english_text is None:
+        raise ValueError("Please enter a valid text in English")
+    else:
+        #write the code here
+        french_text = language_translator.translate(
+        text=english_text,
+        model_id='en-fr').get_result()['translations'][0]['translation']
+        # print(json.dumps(translation, indent=2, ensure_ascii=False))
+        return french_text
+        
 
-def frenchToEnglish(frenchText):
+def frenchToEnglish(french_text):
     """
     translate French to English
     """
-    #write the code here
-    englishText = language_translator.translate(
-    text=frenchText,
-    model_id='fr-en').get_result()
-    # print(json.dumps(translation, indent=2, ensure_ascii=False))
-    return englishText
+    if french_text is None:
+        raise ValueError("Please enter a valid text in French")
+    else:
+        #write the code here
+        english_text = language_translator.translate(
+        text=french_text,
+        model_id='fr-en').get_result()['translations'][0]['translation']
+        # print(json.dumps(translation, indent=2, ensure_ascii=False))
+        return english_text
+    
